@@ -1,0 +1,521 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MATATAG</title>
+        <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+
+            background-color: #fffdf5;
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 31px,
+                #b9d7f0 32px
+            );
+
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+    .notebook {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .tagline {
+        font-size: 22px;
+        font-style: italic;
+    }
+
+    .divider {
+        border-top: 2px solid #333;
+        margin: 25px 0;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .test-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .test-card {
+        background: #fffaf0;
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .test-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .test-card span {
+        font-size: 30px;
+        margin-right: 10px;
+    }
+
+    .test-card strong {
+        font-size: 22px;
+    }
+
+    .test-card small {
+        display: block;
+        margin-top: 8px;
+        margin-left: 45px;
+        font-size: 15px;
+    }
+    .review-page {
+        display: none;
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .back-button {
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: transform 0.2s ease;
+    }
+
+    .back-button:hover {
+        transform: translateX(-8px);
+    }
+
+    .subject-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .subject-card {
+        background: #fffaf0;
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        transition: transform 0.2s ease;
+    }
+
+    .subject-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .subject-card h3 {
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .subject-card p {
+        font-size: 17px;
+        margin: 8px 0;
+    }
+
+    .subject-card button {
+        margin-top: 12px;
+        padding: 10px 18px;
+        border: 2px solid #333;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .subject-card button:hover {
+        transform: translateY(-2px);
+    }
+    .timer-screen {
+        display: none;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .timer-screen h2 {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+.topic-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+    #timerTopic {
+        font-size: 18px;
+        font-style: italic;
+    }
+
+    .time-options {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 30px 0;
+    }
+
+    .time-options button {
+        padding: 12px 20px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        background: #fffaf0;
+        cursor: pointer;
+        font-size: 17px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .choose-time-text {
+        font-size: 19px;
+        font-weight: bold;
+        margin-top: 25px;
+    }
+
+    .time-options button:hover {
+        transform: translateY(-2px);
+    }
+
+    .time-options button.selected {
+        background: #333;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 0 #999;
+    }
+
+    .remaining-label {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+
+    #completionMessage {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    #countdown {
+        font-size: 70px;
+        font-weight: bold;
+        margin: 30px auto;
+        padding: 20px 40px;
+        width: fit-content;
+        border: 3px solid #333;
+        border-radius: 15px;
+        background: #fffaf0;
+    }
+
+    .timer-controls {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .timer-controls button {
+        padding: 12px 18px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: transform 0.2s ease;
+    }
+
+    .timer-controls button:hover {
+        transform: translateY(-2px);
+        background: #fffaf0;
+    }
+
+    .timer-controls button:hover {
+        transform: translateY(-2px);
+    }
+
+    .review-tips {
+        margin-top: 30px;
+        padding: 20px;
+        background: #fffaf0;
+        border: 2px dashed #333;
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 3px 3px 0 #bbb;
+    }
+
+    .review-tips h3 {
+        margin-top: 0;
+        font-size: 22px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 8px;
+    }
+
+    .review-tips p {
+        font-size: 16px;
+        margin: 12px 0;
+        padding-left: 5px;
+    }
+
+    </style>
+    </head>
+
+    <body>
+
+    <body>
+
+        <div class="notebook">
+
+            <h1>MATATAG</h1>
+            <p class="tagline">Review. Learn. Be Matatag.</p>
+
+            <div class="divider"></div>
+
+            <h2>📚 Choose Your Test</h2>
+
+            <div class="test-list">
+
+                <button class="test-card" onclick="showFirstSummative()">
+                    <span>📝</span>
+                    <strong>First Summative Test</strong>
+                    <small>Review Timer</small>
+                </button>
+
+                <button class="test-card">
+                    <span>📖</span>
+                    <strong>Second Summative Test</strong>
+                    <small>Coming Soon</small>
+                </button>
+
+            </div>
+
+        </div>
+
+    </body>
+    <div id="firstSummative" class="review-page">
+
+        <button class="back-button" onclick="goHome()">← Back</button>
+
+        <h2>📝 First Summative Test</h2>
+        <p>Choose a subject to review.</p>
+
+        <div class="subject-list">
+
+            <div class="subject-card">
+        <h3>🌎 Araling Panlipunan</h3>
+        <p>⚖️ Ekwilibriyo (Equilibrium)</p>
+        <p>🏪 Monopolyong Pamilihan</p>
+
+        <button onclick="openTimer('Araling Panlipunan', '⚖️ Ekwilibriyo (Equilibrium)')">
+            Review Ekwilibriyo
+        </button>
+
+        <button onclick="openTimer('Araling Panlipunan', '🏪 Monopolyong Pamilihan')">
+            Review Monopolyong Pamilihan
+        </button>
+    </div>
+            </div>
+
+            <div class="subject-card">
+                <h3>🔬 Science</h3>
+                <p>🦴 Fossils and Dating Methods</p>
+                <button onclick="openTimer('Science', '🦴 Fossils and Dating Methods')">
+            Start Review
+                </button>
+            </div>
+
+            <div class="subject-card">
+                <h3>🎨 MAPEH</h3>
+                <p>Common Themes, Styles, and Techniques in Casual Art</p>
+                <button onclick="openTimer('MAPEH', 'Common Themes, Styles, and Techniques in Casual Art')">
+        Start Review
+                </button>
+            </div>
+
+            <div class="subject-card">
+                <h3>🇵🇭 Filipino</h3>
+                <p>Panitikan at Pagsusuri ng Tula</p>
+                <button onclick="openTimer('Filipino', 'Panitikan at Pagsusuri ng Tula')">
+        Start Review
+    </button>
+            </div>
+
+            <div class="subject-card">
+                <h3>📖 English</h3>
+                <p>Argumentative Essay & Types of Evidence</p>
+                <button onclick="openTimer('English', 'Argumentative Essay & Types of Evidence')">
+        Start Review
+    </button>
+            </div>
+
+            <div class="subject-card">
+                <h3>📐 Math</h3>
+                <p>Quadrilaterals & Midsegment Theorem</p>
+                <button onclick="openTimer('Math', 'Quadrilaterals & Midsegment Theorem')">
+        Start Review
+    </button>
+            </div>
+
+            <div class="subject-card">
+                <h3>🌱 TLE</h3>
+                <p>No topics added yet.</p>
+            </div>
+
+            <div class="subject-card">
+                <h3>💭 Values Education</h3>
+                <p>Pamilya, Pananagutan, at Kabutihang Panlahat</p>
+                <button onclick="openTimer('Values Education', 'Pamilya, Pananagutan, at Kabutihang Panlahat')">
+        Start Review
+    </button>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        function showFirstSummative() {
+            document.querySelector(".notebook").style.display = "none";
+            document.getElementById("firstSummative").style.display = "block";
+        }
+
+        function goHome() {
+            document.getElementById("firstSummative").style.display = "none";
+            document.querySelector(".notebook").style.display = "block";
+        }
+    function openTimer(subject, topic) {
+        clearInterval(timer);
+        timer = null;
+
+        selectedTime = 0;
+        timeLeft = 0;
+        updateCountdown();
+
+        document.getElementById("firstSummative").style.display = "none";
+        document.getElementById("timerScreen").style.display = "block";
+
+        document.getElementById("timerSubject").textContent = subject;
+        document.getElementById("timerTopic").textContent = topic;
+    }
+    function closeTimer() {
+        document.getElementById("timerScreen").style.display = "none";
+        document.getElementById("firstSummative").style.display = "block";
+    }
+    let timeLeft = 0;
+    let timer = null;
+    let selectedTime = 0;
+
+    function chooseTime(minutes) {
+        selectedTime = minutes * 60;
+        timeLeft = selectedTime;
+        updateCountdown();
+
+        document.querySelectorAll(".time-options button").forEach(function(button) {
+            button.classList.remove("selected");
+        });
+
+        event.target.classList.add("selected");
+    }
+
+    function updateCountdown() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        minutes = String(minutes).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+
+        document.getElementById("countdown").textContent =
+            minutes + ":" + seconds;
+    }
+    function startTimer() {
+        if (timer !== null || timeLeft <= 0) {
+            return;
+        }
+
+        document.getElementById("completionMessage").textContent = "";
+
+        timer = setInterval(function() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateCountdown();
+            } else {
+                clearInterval(timer);
+                timer = null;
+
+                document.getElementById("completionMessage").textContent =
+                    "🎉 Review complete! Great job!";
+            }
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timer);
+        timer = null;
+    }
+    function resetTimer() {
+        clearInterval(timer);
+        timer = null;
+        timeLeft = selectedTime;
+        updateCountdown();
+    }
+    </script>
+    <div id="timerScreen" class="timer-screen">
+
+        <button class="back-button" onclick="closeTimer()">← Back</button>
+
+        <p class="subject-label">📚 Subject</p>
+<h2 id="timerSubject">Review</h2>
+        <p class="topic-label">📖 Current Topic</p>
+    <p id="timerTopic">Choose your review time.</p>
+
+    <p class="choose-time-text">⏱️ Choose your review time:</p>
+
+        <div class="time-options">
+            <button onclick="chooseTime(15)">15 min</button>
+            <button onclick="chooseTime(25)">25 min</button>
+            <button onclick="chooseTime(45)">45 min</button>
+            <button onclick="chooseTime(60)">60 min</button>
+        </div>
+
+        <p class="remaining-label">⏳ Time Remaining</p>
+    <div id="countdown">00:00</div>
+    <p id="completionMessage"></p>
+
+        <div class="timer-controls">
+            <button onclick="startTimer()">▶ Start</button>
+            <button onclick="pauseTimer()">⏸ Pause</button>
+            <button onclick="resetTimer()">↻ Reset</button>
+        </div>
+
+    <div class="review-tips">
+        <h3>📚 Review Tips</h3>
+        <p>🧠 Focus on one topic at a time.</p>
+        <p>✍️ Write down important points.</p>
+        <p>📵 Avoid distractions while reviewing.</p>
+        <p>💧 Take a short break when you're done.</p>
+    </div>
+
+    </div>
+    </body>
+    </html>
